@@ -1,72 +1,88 @@
 import 'package:flutter/material.dart';
-import '../components/amalantile.dart';
-import '../components/customappbar.dart';
-import '../database/databasehelper.dart';
 
-class AmalanPage extends StatefulWidget {
+import '../data/amalandata.dart';
+import 'detailamalanpage.dart';
+
+class AmalanPage extends StatelessWidget {
   const AmalanPage({super.key});
 
   @override
-  State<AmalanPage> createState() => _AmalanPageState();
-}
-
-class _AmalanPageState extends State<AmalanPage> {
-
-  List data = [];
-
-  getData() async {
-    data = await DBHelper.getAmalan();
-    setState(() {});
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    getData();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
+    return Scaffold(
 
-        const CustomAppBar(),
+      backgroundColor:
+          Colors.grey.shade100,
 
-        Expanded(
-          child: ListView(
-            padding: const EdgeInsets.all(15),
+      appBar: AppBar(
+        title: const Text(
+          "Amalan & Sunnah Harian",
+        ),
+      ),
 
-            children: [
+      body: ListView.builder(
+        padding:
+            const EdgeInsets.all(15),
 
-              const Text(
-                "Amalan & Sunnah Harian",
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
+        itemCount: amalanList.length,
+
+        itemBuilder: (context, index) {
+
+          final item =
+              amalanList[index];
+
+          return Card(
+            margin:
+                const EdgeInsets.only(
+              bottom: 15,
+            ),
+
+            shape:
+                RoundedRectangleBorder(
+              borderRadius:
+                  BorderRadius.circular(
+                20,
+              ),
+            ),
+
+            child: ListTile(
+              contentPadding:
+                  const EdgeInsets.all(
+                15,
+              ),
+
+              leading: CircleAvatar(
+                backgroundColor:
+                    Colors.green.shade100,
+
+                child: const Icon(
+                  Icons.menu_book,
+                  color: Colors.green,
                 ),
               ),
 
-              const SizedBox(height: 10),
-
-              const Text(
-                "Kumpulan doa, dzikir, dan amalan sunnah sehari-hari",
-                style: TextStyle(
-                  color: Colors.grey,
-                ),
+              title: Text(
+                item.title,
               ),
 
-              const SizedBox(height: 20),
+              trailing: const Icon(
+                Icons.arrow_forward_ios,
+              ),
 
-              ...data.map(
-                (e) => AmalanTile(
-                  title: e['title'],
-                  category: e['category'],
-                ),
-              )
-            ],
-          ),
-        )
-      ],
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) =>
+                        DetailAmalanPage(
+                      amalan: item,
+                    ),
+                  ),
+                );
+              },
+            ),
+          );
+        },
+      ),
     );
   }
 }

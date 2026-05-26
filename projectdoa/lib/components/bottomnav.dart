@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class BottomNav extends StatelessWidget {
+
   final int currentIndex;
+
   final Function(int) onTap;
 
   const BottomNav({
@@ -12,29 +14,72 @@ class BottomNav extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      currentIndex: currentIndex,
-      onTap: onTap,
-      selectedItemColor: Colors.green,
-      unselectedItemColor: Colors.black,
-      items: const [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.home),
-          label: "Home",
+
+    return Container(
+      margin: const EdgeInsets.all(15),
+
+      decoration: BoxDecoration(
+        color: Colors.white,
+
+        borderRadius:
+            BorderRadius.circular(25),
+
+        boxShadow: [
+          BoxShadow(
+            blurRadius: 15,
+            color:
+                Colors.black.withOpacity(0.08),
+          )
+        ],
+      ),
+
+      child: ClipRRect(
+        borderRadius:
+            BorderRadius.circular(25),
+
+        child: BottomNavigationBar(
+
+          currentIndex: currentIndex,
+
+          onTap: onTap,
+
+          type:
+              BottomNavigationBarType.fixed,
+
+          selectedItemColor:
+              Colors.green,
+
+          unselectedItemColor:
+              Colors.grey,
+
+          backgroundColor: Colors.white,
+
+          elevation: 0,
+
+          items: const [
+
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: "Home",
+            ),
+
+            BottomNavigationBarItem(
+              icon: Icon(Icons.favorite),
+              label: "Amalan",
+            ),
+
+            BottomNavigationBarItem(
+              icon: Icon(Icons.article),
+              label: "Artikel",
+            ),
+
+            BottomNavigationBarItem(
+              icon: Icon(Icons.mosque),
+              label: "Shalat",
+            ),
+          ],
         ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.pan_tool),
-          label: "Amalan",
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.article),
-          label: "Artikel",
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.mosque),
-          label: "Shalat",
-        ),
-      ],
+      ),
     );
   }
 }

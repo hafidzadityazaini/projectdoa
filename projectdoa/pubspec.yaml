@@ -34,9 +34,22 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
+  google_fonts: ^6.2.1
   sqflite: ^2.3.0
   path: ^1.9.0
   intl: ^0.19.0
+  http: ^1.2.1
+  geolocator: ^13.0.4
+  flutter_qiblah: ^3.0.4
+  geocoding: ^3.0.0
+  flutter_compass: ^0.8.0
+  just_audio: ^0.9.36
+  flutter_local_notifications: ^17.1.2
+  hijri: ^3.0.0
+  audioplayers: ^6.0.0 
+  flutter_typeahead: ^5.2.0
+  world_countries: ^1.0.0
+  country_state_city_picker: ^1.2.8
 
 dev_dependencies:
   flutter_test:
@@ -65,6 +78,12 @@ flutter:
     - assets/logo.png
     - assets/poster.png
     - assets/maghrib.jpeg
+    - assets/dzikir.jpeg
+    - assets/compass.jpg
+    - assets/worldcities.json
+    - assets/tahajjud.jpeg
+    - assets/sedekah.jfif
+    - assets/amalanjum'at.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
